@@ -3,17 +3,17 @@ LD = g++
 
 TARGET = run
 
-LIBS = 
+LIBS = -lhdf5
 
-CFLAGS =
-LFLAGS =
+CFLAGS = -I/home/libs/hdf5/include
+LFLAGS = -L/home/libs/hdf5/lib
 
 OBJS = obj/main.o
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(LD) $(LFLAGS) $(OBJS) -o $(TARGET)
+	$(LD) $(LFLAGS) $(OBJS) $(LIBS) -o $(TARGET)
 
 obj/main.o: src/main.cc
 	mkdir -p obj
